@@ -1,0 +1,9 @@
+{
+    "model": "TabTransformer",
+    "dataset": "financial_v1",
+    "size": 50000,
+    "metrics": {
+        "auc": 0.95,
+        "f1": 0.93
+    }
+}

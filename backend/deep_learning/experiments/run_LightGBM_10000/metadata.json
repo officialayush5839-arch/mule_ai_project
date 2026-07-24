@@ -1,0 +1,9 @@
+{
+    "model": "LightGBM",
+    "dataset": "financial_v1",
+    "size": 10000,
+    "metrics": {
+        "auc": 0.991,
+        "f1": 0.98
+    }
+}

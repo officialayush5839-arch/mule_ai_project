@@ -1,0 +1,9 @@
+{
+    "model": "FTTransformer",
+    "dataset": "financial_v1",
+    "size": 250000,
+    "metrics": {
+        "auc": 0.985,
+        "f1": 0.975
+    }
+}
