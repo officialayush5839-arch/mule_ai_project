@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 from typing import Dict, Any, Tuple
 from backend.deep_learning.models.base.enterprise_base_model import EnterpriseBaseModel
 

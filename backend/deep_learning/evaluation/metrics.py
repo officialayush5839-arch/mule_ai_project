@@ -4,6 +4,23 @@ from typing import Dict
 
 class ClassificationMetrics:
     @staticmethod
+    def expected_calibration_error(y_true: np.ndarray, y_prob: np.ndarray, n_bins: int = 10) -> float:
+        bin_boundaries = np.linspace(0, 1, n_bins + 1)
+        bin_lowers = bin_boundaries[:-1]
+        bin_uppers = bin_boundaries[1:]
+        
+        ece = 0.0
+        for bin_lower, bin_upper in zip(bin_lowers, bin_uppers):
+            in_bin = (y_prob > bin_lower) & (y_prob <= bin_upper)
+            prop_in_bin = in_bin.mean()
+            if prop_in_bin > 0:
+                accuracy_in_bin = y_true[in_bin].mean()
+                avg_confidence_in_bin = y_prob[in_bin].mean()
+                ece += np.abs(avg_confidence_in_bin - accuracy_in_bin) * prop_in_bin
+                
+        return ece
+
+    @staticmethod
     def compute(y_true: np.ndarray, y_prob: np.ndarray, threshold: float = 0.5) -> Dict[str, float]:
         y_pred = (y_prob >= threshold).astype(int)
         
@@ -14,7 +31,8 @@ class ClassificationMetrics:
             "Precision": float(precision_score(y_true, y_pred)),
             "Recall": float(recall_score(y_true, y_pred)),
             "Accuracy": float(accuracy_score(y_true, y_pred)),
-            "Calibration Error (Brier)": float(brier_score_loss(y_true, y_prob))
+            "Brier Score": float(brier_score_loss(y_true, y_prob)),
+            "ECE": float(ClassificationMetrics.expected_calibration_error(y_true, y_prob))
         }
 
 class ReconstructionMetrics:

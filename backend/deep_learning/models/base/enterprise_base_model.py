@@ -22,19 +22,23 @@ class EnterpriseBaseModel(nn.Module):
         """
         raise NotImplementedError("Subclasses must implement forward()")
 
-    def predict(self, x: torch.Tensor, device: torch.device) -> torch.Tensor:
+    def predict(self, x: Any, device: torch.device) -> torch.Tensor:
         """
         Inference wrapper that handles evaluation mode and detached gradients.
         """
         self.eval()
         self.to(device)
         with torch.no_grad():
-            x = x.to(device)
+            if isinstance(x, tuple):
+                x = tuple(t.to(device) if t is not None else None for t in x)
+            else:
+                x = x.to(device)
             return self.forward(x)
 
-    def predict_proba(self, x: torch.Tensor, device: torch.device) -> torch.Tensor:
+    def predict_proba(self, x: Any, device: torch.device) -> torch.Tensor:
         """
-        Probabilistic inference. By default applies Sigmoid to logits.
+        Returns probabilities assuming binary classification.
+        Applies sigmoid to logits.
         """
         logits = self.predict(x, device)
         return torch.sigmoid(logits)
