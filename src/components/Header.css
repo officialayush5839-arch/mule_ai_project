@@ -1,0 +1,249 @@
+/* ═══════════════════════════════════════════
+   MuleNet AI — Header Panel Styles
+   ═══════════════════════════════════════════ */
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: var(--header-height);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  z-index: 90;
+  transition: padding-left var(--transition-slow);
+}
+
+/* Push header right if sidebar is expanded, handled via main content container padding, 
+   but since header is fixed to left: 0, we should offset it matching the sidebar collapsed state */
+.sidebar.expanded ~ .app-content .header {
+  left: var(--sidebar-expanded);
+}
+
+/* Search bar styling */
+.header-search-form {
+  width: 100%;
+  max-width: 480px;
+}
+
+.search-input {
+  background: var(--surface-2) !important;
+  border-color: transparent !important;
+}
+.search-input:focus {
+  background: var(--surface) !important;
+  border-color: var(--primary) !important;
+}
+
+/* Actions area */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* System health widget */
+.system-health {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--safe-bg);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: #059669;
+}
+
+.health-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+  animation: pulse-glow 1.5s infinite;
+}
+
+/* Notification panel trigger */
+.btn-action-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transition-base);
+}
+
+.btn-action-icon:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.notification-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--critical);
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+}
+
+/* Notification dropdown wrapper */
+.notification-wrapper {
+  position: relative;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 320px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  z-index: 120;
+}
+
+.dropdown-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-header h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mark-read {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.dropdown-items {
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.dropdown-item:hover {
+  background: var(--primary-light);
+}
+
+.dropdown-item.unread {
+  background: #fbfdff;
+  border-left: 3px solid var(--primary);
+}
+
+.item-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.item-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.item-time {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.item-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.dropdown-footer {
+  padding: 12px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  border-top: 1px solid var(--border);
+  cursor: pointer;
+  background: var(--surface-2);
+}
+.dropdown-footer:hover {
+  text-decoration: underline;
+}
+
+/* Profile widget */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-text {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.profile-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.profile-role {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.profile-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .profile-text, .system-health {
+    display: none;
+  }
+  .header {
+    padding: 0 16px;
+  }
+}

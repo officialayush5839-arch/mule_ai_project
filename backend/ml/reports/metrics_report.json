@@ -1,0 +1,37 @@
+{
+  "model_name": "LightGBM",
+  "threshold": 0.9049999999999999,
+  "n_samples": 750,
+  "n_positive": 30,
+  "accuracy": 0.9973,
+  "balanced_accuracy": 0.9667,
+  "precision": 1.0,
+  "recall": 0.9333,
+  "f1_binary": 0.9655,
+  "f1_macro": 0.9821,
+  "f1_weighted": 0.9973,
+  "mcc": 0.9648,
+  "cohen_kappa": 0.9641,
+  "roc_auc": 0.9995,
+  "pr_auc": 0.9911,
+  "brier_score": 0.00164,
+  "ece": 0.0019,
+  "confusion_matrix": {
+    "tn": 720,
+    "fp": 0,
+    "fn": 2,
+    "tp": 28
+  },
+  "calibration_curve": {
+    "fraction_of_positives": [
+      0.0013869625520110957,
+      1.0,
+      1.0
+    ],
+    "mean_predicted_value": [
+      8.339393260496548e-05,
+      0.5180597667130371,
+      0.9999918706500555
+    ]
+  }
+}

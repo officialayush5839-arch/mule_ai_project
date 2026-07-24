@@ -1,0 +1,46 @@
+[
+  {
+    "feature": "net_risk_index",
+    "importance": 4.48189
+  },
+  {
+    "feature": "mule_anomaly_composite",
+    "importance": 2.92826
+  },
+  {
+    "feature": "velocity_concentration",
+    "importance": 2.76154
+  },
+  {
+    "feature": "F3894",
+    "importance": 1.2
+  },
+  {
+    "feature": "F670",
+    "importance": 0.76634
+  },
+  {
+    "feature": "F115",
+    "importance": 0.42002
+  },
+  {
+    "feature": "F527",
+    "importance": 0.36882
+  },
+  {
+    "feature": "F1692",
+    "importance": 0.0827
+  },
+  {
+    "feature": "F321",
+    "importance": 0.05142
+  },
+  {
+    "feature": "F3043",
+    "importance": 0.0231
+  },
+  {
+    "feature": "outflow_dominance",
+    "importance": 0.00246
+  }
+]

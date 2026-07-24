@@ -1,0 +1,81 @@
+{
+  "input_features": [
+    "F115",
+    "F321",
+    "F527",
+    "F670",
+    "F1692",
+    "F3043",
+    "F3894"
+  ],
+  "output_features": [
+    "F115",
+    "F321",
+    "F527",
+    "F670",
+    "F1692",
+    "F3043",
+    "F3894",
+    "outflow_dominance",
+    "velocity_concentration",
+    "mule_anomaly_composite",
+    "net_risk_index"
+  ],
+  "mi_ranking": [
+    {
+      "feature": "net_risk_index",
+      "mi_score": 0.15306,
+      "rank": 1
+    },
+    {
+      "feature": "mule_anomaly_composite",
+      "mi_score": 0.1459,
+      "rank": 2
+    },
+    {
+      "feature": "velocity_concentration",
+      "mi_score": 0.12528,
+      "rank": 3
+    },
+    {
+      "feature": "F527",
+      "mi_score": 0.12031,
+      "rank": 4
+    },
+    {
+      "feature": "F1692",
+      "mi_score": 0.11282,
+      "rank": 5
+    },
+    {
+      "feature": "F3894",
+      "mi_score": 0.10576,
+      "rank": 6
+    },
+    {
+      "feature": "F670",
+      "mi_score": 0.0525,
+      "rank": 7
+    },
+    {
+      "feature": "F115",
+      "mi_score": 0.04213,
+      "rank": 8
+    },
+    {
+      "feature": "F3043",
+      "mi_score": 0.03811,
+      "rank": 9
+    },
+    {
+      "feature": "F321",
+      "mi_score": 0.03739,
+      "rank": 10
+    },
+    {
+      "feature": "outflow_dominance",
+      "mi_score": 0.0076,
+      "rank": 11
+    }
+  ]
+}

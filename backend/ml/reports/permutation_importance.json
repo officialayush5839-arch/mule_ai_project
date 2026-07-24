@@ -1,0 +1,57 @@
+[
+  {
+    "feature": "velocity_concentration",
+    "importance": 0.02526,
+    "std": 0.01871
+  },
+  {
+    "feature": "net_risk_index",
+    "importance": 0.01638,
+    "std": 0.0079
+  },
+  {
+    "feature": "F670",
+    "importance": 0.01568,
+    "std": 0.00294
+  },
+  {
+    "feature": "mule_anomaly_composite",
+    "importance": 0.0106,
+    "std": 0.00221
+  },
+  {
+    "feature": "F3894",
+    "importance": 0.00637,
+    "std": 0.00406
+  },
+  {
+    "feature": "F115",
+    "importance": 0.00554,
+    "std": 0.00417
+  },
+  {
+    "feature": "F321",
+    "importance": 0.00101,
+    "std": 0.00065
+  },
+  {
+    "feature": "F1692",
+    "importance": 0.00101,
+    "std": 0.00069
+  },
+  {
+    "feature": "F527",
+    "importance": 0.00091,
+    "std": 0.00044
+  },
+  {
+    "feature": "F3043",
+    "importance": 2e-05,
+    "std": 0.00102
+  },
+  {
+    "feature": "outflow_dominance",
+    "importance": -0.0,
+    "std": 0.0
+  }
+]

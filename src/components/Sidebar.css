@@ -1,0 +1,203 @@
+/* ═══════════════════════════════════════════
+   MuleNet AI — Sidebar Navigation Styles
+   ═══════════════════════════════════════════ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-collapsed);
+  background-color: #0f172a; /* Deep dark slate */
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: width var(--transition-slow);
+  overflow-x: hidden;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar.expanded {
+  width: var(--sidebar-expanded);
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.logo-icon-container {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  animation: pulse-glow 2s infinite;
+}
+
+.logo-name {
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.logo-version {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* Nav Menu */
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 12px 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: #94a3b8;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  position: relative;
+}
+
+.nav-icon {
+  flex-shrink: 0;
+}
+
+.nav-label {
+  margin-left: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Active & Hover states */
+.nav-item:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.nav-item.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(79, 70, 229, 0.15));
+  border: 1px solid rgba(37, 99, 235, 0.25);
+}
+
+.nav-item.active .nav-icon {
+  color: var(--primary);
+}
+
+/* Collapsed Tooltip */
+.sidebar-tooltip {
+  position: absolute;
+  left: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1e293b;
+  color: #f8fafc;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: opacity var(--transition-fast), left var(--transition-fast);
+}
+
+.nav-item:hover .sidebar-tooltip {
+  opacity: 1;
+  left: 52px;
+}
+
+/* Footer Section */
+.sidebar-footer {
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.analyst-info {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.analyst-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.analyst-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.analyst-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.analyst-role {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.logout-btn {
+  color: #ef4444;
+}
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.05);
+  color: #f87171;
+}

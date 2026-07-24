@@ -1,0 +1,4 @@
+txn_amount,velocity,account_age,junk_col,is_fraud
+100,0.1,10,a,0
+200,0.5,5,b,0
+300,0.9,1,c,1

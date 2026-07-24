@@ -1,0 +1,85 @@
+{
+  "n_folds": 10,
+  "fold_details": [
+    {
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "f1": 1.0,
+      "recall": 1.0,
+      "mcc": 1.0
+    },
+    {
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "f1": 1.0,
+      "recall": 1.0,
+      "mcc": 1.0
+    },
+    {
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "f1": 1.0,
+      "recall": 1.0,
+      "mcc": 1.0
+    },
+    {
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "f1": 1.0,
+      "recall": 1.0,
+      "mcc": 1.0
+    },
+    {
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "f1": 1.0,
+      "recall": 1.0,
+      "mcc": 1.0
+    },
+    {
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "f1": 1.0,
+      "recall": 1.0,
+      "mcc": 1.0
+    },
+    {
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "f1": 1.0,
+      "recall": 1.0,
+      "mcc": 1.0
+    },
+    {
+      "pr_auc": 0.9967320261437909,
+      "roc_auc": 0.9998558246828143,
+      "f1": 0.9696969696969697,
+      "recall": 0.9411764705882353,
+      "mcc": 0.9689557810465201
+    },
+    {
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "f1": 1.0,
+      "recall": 1.0,
+      "mcc": 1.0
+    },
+    {
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "f1": 1.0,
+      "recall": 1.0,
+      "mcc": 1.0
+    }
+  ],
+  "pr_auc_mean": 0.9997,
+  "pr_auc_std": 0.001,
+  "roc_auc_mean": 1.0,
+  "roc_auc_std": 0.0,
+  "f1_mean": 0.997,
+  "f1_std": 0.0091,
+  "recall_mean": 0.9941,
+  "recall_std": 0.0176,
+  "mcc_mean": 0.9969,
+  "mcc_std": 0.0093
+}
