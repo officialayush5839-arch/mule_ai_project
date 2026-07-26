@@ -1,0 +1,3 @@
+name: gpu
+condition: threshold
+action: notify
