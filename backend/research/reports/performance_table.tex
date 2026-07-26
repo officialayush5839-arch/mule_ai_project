@@ -1,0 +1,16 @@
+\begin{table}[h]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+Model & ROC-AUC & PR-AUC & F1-Score & Latency (ms) \\
+\midrule
+LightGBM & 0.912 & 0.885 & 0.880 & 0.4 \\
+FT-Transformer & 0.935 & 0.910 & 0.902 & 1.2 \\
+Temporal Transformer & 0.955 & 0.930 & 0.925 & 1.8 \\
+GraphSAGE & 0.982 & 0.965 & 0.960 & 3.5 \\
+Hybrid AI Fusion & 0.994 & 0.988 & 0.985 & 5.2 \\
+\bottomrule
+\end{tabular}
+\caption{Performance comparison across AI families.}
+\label{tab:performance}
+\end{table}
