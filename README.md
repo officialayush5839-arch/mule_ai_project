@@ -4,7 +4,6 @@
   <p><b>Enterprise Financial Crime & Money Mule Intelligence Platform</b></p>
   
   [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](#)
-  [![License](https://img.shields.io/badge/license-MIT-blue)](#)
   [![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
   [![React](https://img.shields.io/badge/react-18.x-61DAFB.svg)](https://reactjs.org/)
 </div>
@@ -87,10 +86,6 @@ MuleNet AI has undergone rigorous scientific validation (Phase 0 Audit):
 *   **Unknown Fraud Generalization**: Successfully detected synthetic typologies (e.g., Crypto Cashouts) that were strictly excluded from the training set.
 
 Detailed reports are generated internally during training runs using the `ml/research/run_advanced_generalization_audit.py` orchestrator.
-
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 <div align="center">
