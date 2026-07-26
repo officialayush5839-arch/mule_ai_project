@@ -493,5 +493,76 @@ export const api = {
         { id: 'ACC-UPLOAD-05', riskScore: 76, classification: 'SUSPICIOUS', reason: 'Centrality anomaly' }
       ]
     };
+  },
+
+  // ── Admin Observability ──
+  getSystemHealth: async () => {
+    if (!USE_REAL_BACKEND) {
+      await delay(500);
+      return {
+        timestamp: new Date().toISOString(),
+        services: {
+          status: "demo",
+          backend: { status: "healthy", latency: "45ms" },
+          database: { status: "healthy", latency: "12ms" },
+          redis: { status: "healthy", latency: "5ms" },
+          ai_engine: { status: "healthy", latency: "85ms" }
+        }
+      };
+    }
+    
+    try {
+      const response = await fetch(`${BACKEND_URL}/admin/system-health`);
+      if (!response.ok) throw new Error("Failed to fetch system health");
+      return await response.json();
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
+  },
+
+  getAdminMetrics: async () => {
+    if (!USE_REAL_BACKEND) {
+      await delay(400);
+      return {
+        api: { requests: 125430, latency: 86, errors: 0.02 },
+        ai: { predictions: 98540, inference_time: 92, success_rate: 99.8 },
+        security: { suspicious: 342, high_risk: 56, blocked: 21 },
+        infrastructure: { cpu_usage: 42, memory_usage: 61, database_connections: 24 }
+      };
+    }
+    
+    try {
+      const response = await fetch(`${BACKEND_URL}/admin/metrics`);
+      if (!response.ok) throw new Error("Failed to fetch admin metrics");
+      return await response.json();
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
+  },
+
+  getSignozAccess: async () => {
+    if (!USE_REAL_BACKEND) {
+      await delay(400);
+      return {
+        success: true,
+        has_access: true,
+        signoz: {
+          url: import.meta.env.VITE_SIGNOZ_URL || "https://signoz.io",
+          status: "connected",
+          latency_ms: 42
+        }
+      };
+    }
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/admin/signoz-access`);
+      if (!response.ok) throw new Error("Failed to verify SigNoz access");
+      return await response.json();
+    } catch (e) {
+      console.error(e);
+      return { success: false, has_access: false, error: e.message };
+    }
   }
 };

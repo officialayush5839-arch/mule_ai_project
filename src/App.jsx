@@ -10,11 +10,16 @@ import RiskEngine from './pages/RiskEngine';
 import PatternDiscovery from './pages/PatternDiscovery';
 import Copilot from './pages/Copilot';
 import ModelIntel from './pages/ModelIntel';
+import AdminObservability from './pages/AdminObservability';
+import ApplicationMonitoringCenter from './pages/ApplicationMonitoringCenter';
+import { AuthProvider } from './context/AuthContext';
+import ErrorBoundary from './components/ErrorBoundary';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
         {/* Landing Page */}
         <Route path="/" element={<Landing />} />
 
@@ -44,7 +49,14 @@ export default function App() {
 
         {/* Model evaluation reports */}
         <Route path="/model-intel" element={<ModelIntel />} />
+
+        {/* Admin Observability Dashboard */}
+        <Route path="/admin/observability" element={<ErrorBoundary><AdminObservability /></ErrorBoundary>} />
+
+        {/* Custom APM replacing SigNoz */}
+        <Route path="/admin/monitoring" element={<ErrorBoundary><ApplicationMonitoringCenter /></ErrorBoundary>} />
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
   );
 }

@@ -2,7 +2,8 @@ import uvicorn
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import predict, analytics, alerts, copilot
+from routers import predict, analytics, alerts, copilot, admin, monitoring
+from observability.middleware.custom_tracing import CustomTracingMiddleware
 import logging
 
 logger = logging.getLogger(__name__)
@@ -61,6 +62,11 @@ app.include_router(predict.router,    prefix="/api", tags=["Predictive Analytics
 app.include_router(analytics.router,  prefix="/api", tags=["Data Intelligence"])
 app.include_router(alerts.router,     prefix="/api", tags=["Alert Systems"])
 app.include_router(copilot.router,    prefix="/api", tags=["AI Copilot Interface"])
+app.include_router(admin.router,      prefix="/api", tags=["Admin Observability"])
+app.include_router(monitoring.router)
+
+# Add Tracing Middleware
+app.add_middleware(CustomTracingMiddleware)
 
 
 @app.get("/")

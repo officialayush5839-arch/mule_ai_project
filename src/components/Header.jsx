@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Bell, Shield, Network, Activity, Database, Upload, RefreshCw, XCircle } from 'lucide-react';
+import { Search, Bell, Shield, Network, Activity, Database, Upload, RefreshCw, XCircle, User, Settings, LogOut, BarChart2 } from 'lucide-react';
 import { api } from '../lib/api';
+import { useAuth } from '../hooks/useAuth';
 import './Header.css';
 
 export default function Header() {
@@ -9,8 +10,12 @@ export default function Header() {
   const [showNotifications, setShowNotifications] = useState(false);
   const [activeSource, setActiveSource] = useState(api.getActiveSource());
   const [isProcessing, setIsProcessing] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [signozStatus, setSignozStatus] = useState({ loading: false, data: null, error: false });
   
+  const { user } = useAuth();
   const fileInputRef = useRef(null);
+  const profileMenuRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,8 +23,26 @@ export default function Header() {
       setActiveSource(api.getActiveSource());
     };
     window.addEventListener('datasource-changed', handleSourceChange);
-    return () => window.removeEventListener('datasource-changed', handleSourceChange);
+    
+    // Close dropdown on outside click
+    const handleClickOutside = (event) => {
+      if (profileMenuRef.current && !profileMenuRef.current.contains(event.target)) {
+        setShowProfileMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    
+    return () => {
+      window.removeEventListener('datasource-changed', handleSourceChange);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
+
+  // Removed SigNoz status checks as per Phase 7 requirements
+
+  const handleOpenSignoz = () => {
+    navigate('/admin/monitoring');
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -179,12 +202,50 @@ export default function Header() {
         </div>
 
         {/* User Session Profile */}
-        <div className="user-profile">
-          <div className="profile-text">
-            <span className="profile-name">Ayush S.</span>
-            <span className="profile-role">Lead Analyst</span>
+        <div className="user-profile-wrapper" ref={profileMenuRef}>
+          <div className="user-profile" onClick={() => setShowProfileMenu(!showProfileMenu)}>
+            <div className="profile-text">
+              <span className="profile-name">{user?.name}</span>
+              <span className="profile-role">{user?.title || user?.role}</span>
+            </div>
+            <div className="profile-avatar">{user?.initials}</div>
           </div>
-          <div className="profile-avatar">AS</div>
+          
+          {showProfileMenu && (
+            <div className="profile-dropdown animate-fade-in">
+              <div className="dropdown-item">
+                <User size={16} /> My Profile
+              </div>
+              <div className="dropdown-item">
+                <Settings size={16} /> Account Settings
+              </div>
+              <div className="dropdown-item">
+                <Bell size={16} /> Notifications
+              </div>
+
+              {/* Application Monitoring Center - Rendered if user has allowed role */}
+              {["ADMIN", "SUPER_ADMIN", "OBSERVABILITY_ADMIN"].includes(user?.role) && (
+                <div 
+                  className="dropdown-item"
+                  onClick={() => { setShowProfileMenu(false); navigate('/admin/monitoring'); }}
+                  title="Open Internal Application Monitoring Center"
+                >
+                  <Activity size={16} className="text-primary" />
+                  <span>Application Monitoring Center</span>
+                </div>
+              )}
+
+              <div className="dropdown-item" onClick={() => { setShowProfileMenu(false); navigate('/admin/observability'); }}>
+                <BarChart2 size={16} /> Observability Dashboard
+              </div>
+              
+              <div className="dropdown-divider"></div>
+              
+              <div className="dropdown-item text-critical">
+                <LogOut size={16} /> Logout
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </header>

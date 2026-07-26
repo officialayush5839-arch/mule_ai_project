@@ -203,11 +203,109 @@
   text-decoration: underline;
 }
 
-/* Profile widget */
+.user-profile-wrapper {
+  position: relative;
+}
+
 .user-profile {
   display: flex;
   align-items: center;
   gap: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background var(--transition-fast);
+}
+
+.user-profile:hover {
+  background: var(--surface-2);
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 280px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  z-index: 120;
+}
+
+.profile-dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  border-bottom: none;
+}
+
+.profile-dropdown .dropdown-item:hover:not(.disabled) {
+  background: var(--surface-2);
+  color: var(--primary);
+}
+
+.profile-dropdown .dropdown-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+.text-critical {
+  color: var(--critical) !important;
+}
+
+.text-critical:hover {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: var(--critical) !important;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.signoz-item {
+  justify-content: space-between;
+}
+
+.signoz-item-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.signoz-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.signoz-status-badge.connected {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+
+.signoz-status-badge.offline {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--critical);
+}
+
+.signoz-status-text {
+  font-size: 10px;
 }
 
 .profile-text {
@@ -239,6 +337,7 @@
   font-size: 13px;
   font-weight: 700;
 }
+
 @media (max-width: 768px) {
   .profile-text, .system-health {
     display: none;
